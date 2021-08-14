@@ -25,13 +25,14 @@ class scrap:
         for i in range(len(self.title)):
             self.link_list.append(self.title[i].a.get('href'))
 
-        self.data1={'title':[],'year':[]}
+        self.data1={'title':[],'ratings':[],year':[]}
         # # data={'title':[],'year':[],'duration':[],'Description':[]}
 
 
         for r in range(6):
             self.data1['title'].append(self.title[r].a.text)
             self.data1['year'].append(self.title[r].span.text)
+            self.data1['ratings'].append(self.ratings.strong.text)
 
         # self.df=pd.DataFrame(self.data1)
         # print(self.df)
