@@ -20,19 +20,19 @@ class scrap:
     
     def title_year(self):
         self.title=self.soup.find_all('td',attrs = {'class':'titleColumn'})
-        self.ratings=self.links.find_all('td',attrs={'class':'ratingColumn imdbRating'})
+        self.ratings=self.soup.find_all('td',attrs={'class':'ratingColumn imdbRating'})
 
         for i in range(len(self.title)):
             self.link_list.append(self.title[i].a.get('href'))
 
-        self.data1={'title':[],'ratings':[],year':[]}
+        self.data1={'title':[],'ratings':[],'year':[]}
         # # data={'title':[],'year':[],'duration':[],'Description':[]}
 
 
         for r in range(6):
             self.data1['title'].append(self.title[r].a.text)
             self.data1['year'].append(self.title[r].span.text)
-            self.data1['ratings'].append(self.ratings.strong.text)
+            self.data1['ratings'].append(self.ratings[r].strong.text)
 
         # self.df=pd.DataFrame(self.data1)
         # print(self.df)
